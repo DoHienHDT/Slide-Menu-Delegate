@@ -8,6 +8,7 @@
 
 import UIKit
 class ContainerVC: UIViewController, ViewControllerDelegate {
+    
 
     @IBOutlet weak var mainContainerView: UIView!
     @IBOutlet weak var sideMenuViewController: UIView!
@@ -15,35 +16,22 @@ class ContainerVC: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var leftMenuViewController: NSLayoutConstraint!
     
     weak var viewController: ViewController?
-    
+    weak var tableViewController: TableViewController?
     var isSideMenuOpen: Bool = false {
         didSet {
-                if isSideMenuOpen {
-                    configForSideMenuOpeningState()
-                } else {
-                    configForSideMenuClosingState()
-                }
+            leftMenuViewController.constant = isSideMenuOpen ? 0 : -sideMenuViewController.bounds.width
+            coverButton.alpha = isSideMenuOpen ? 0.5 : 0
             UIView.animate(withDuration: 0.35, animations:{ self.view.layoutIfNeeded()})
         }
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        configForSideMenuClosingState()
-        
+        isSideMenuOpen = false
+        tableViewController?.delegate = viewController
         viewController?.delegate = self
         // Do any additional setup after loading the view.
     }
-    func configForSideMenuOpeningState() {
-        sideMenuViewController.clipsToBounds = false
-        leftMenuViewController.constant = 0
-        coverButton.alpha = 0.5
-    }
-    func configForSideMenuClosingState() {
-        leftMenuViewController.constant = -self.sideMenuViewController.bounds.width
-        coverButton.alpha = 0
-    }
-    
+  
     func onclickButtonDelegate() {
         isSideMenuOpen = !isSideMenuOpen
     }
@@ -59,6 +47,8 @@ class ContainerVC: UIViewController, ViewControllerDelegate {
         if segue.identifier == "viewController" {
             let navi = segue.destination as? UINavigationController
             viewController = navi?.topViewController as? ViewController
+        } else if segue.identifier == "tableview" {
+            tableViewController = segue.destination as? TableViewController
         }
     }
 

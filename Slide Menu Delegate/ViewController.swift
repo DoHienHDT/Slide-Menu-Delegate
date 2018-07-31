@@ -7,10 +7,12 @@
 //
 
 import UIKit
-protocol ViewControllerDelegate : class {
+protocol ViewControllerDelegate: class {
     func onclickButtonDelegate()
 }
-class ViewController: UIViewController {
+class ViewController: UIViewController, TableViewControllerDelegate {
+    
+    @IBOutlet weak var nameTextField: UILabel!
     weak var delegate: ViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -25,11 +27,11 @@ class ViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
-
-
+    
+    func changeViewController(indexPath: IndexPath) {
+        delegate?.onclickButtonDelegate()
+        print(indexPath.row)
+    }
 }
-//struct NotificationKey {
-//    static let menuClick = NSNotification.Name.init("menuClick")
-//}
