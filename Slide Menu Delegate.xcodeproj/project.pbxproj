@@ -51,6 +51,7 @@
 		80695246210F05C20016FDE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80695252210F076F0016FDE9 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		8088E527210FFF99009B40F1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B3087F06219D7BB3004204F4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 				8069522B210F05C10016FDE9 /* Assets.xcassets */,
 				8069522D210F05C10016FDE9 /* LaunchScreen.storyboard */,
 				80695230210F05C10016FDE9 /* Info.plist */,
+				B3087F06219D7BB3004204F4 /* README.md */,
 			);
 			path = "Slide Menu Delegate";
 			sourceTree = "<group>";
